@@ -1,0 +1,9 @@
+/* Keep the hero portrait visible on first paint, then let it retreat with scroll. */
+@keyframes portrait-scroll {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-120px) scale(.88); opacity: .1; }
+}
+
+/* Fade the studio backdrop into the dark canvas while keeping the subject crisp. */
+.portrait-frame { filter: grayscale(.2) contrast(1.12); }
+.portrait-frame img { mix-blend-mode: screen; opacity: .9; }

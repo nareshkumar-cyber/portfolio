@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nareshkumar A | AI Engineering &amp; AI-Driven Security</title>
+  <meta name="description" content="Portfolio of Nareshkumar A — B.Tech Artificial Intelligence & Data Science student at Kathir College of Engineering, Coimbatore. Exploring Generative AI, ML, RAG, AI Agents, and Cybersecurity." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            background: '#05070a',
+            foreground: '#f3f6f8',
+            card: {
+              DEFAULT: 'rgba(13, 17, 23, 0.75)',
+              foreground: '#f3f6f8',
+              border: 'rgba(255, 255, 255, 0.08)',
+            },
+            cyber: {
+              cyan: '#00f2fe',
+              acid: '#d1ff56',
+              blue: '#4facfe',
+              purple: '#9d4edd',
+              emerald: '#10b981',
+              dark: '#080c10',
+              panel: '#0e141b',
+              border: 'rgba(115, 228, 232, 0.18)',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'Manrope', 'sans-serif'],
+            mono: ['"DM Mono"', 'monospace'],
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'spin-slow': 'spin 20s linear infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+            'scan': 'scan 3s linear infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            glow: {
+              '0%': { boxShadow: '0 0 15px rgba(209, 255, 86, 0.2)' },
+              '100%': { boxShadow: '0 0 35px rgba(209, 255, 86, 0.6)' },
+            },
+            scan: {
+              '0%': { transform: 'translateY(-100%)' },
+              '100%': { transform: 'translateY(1000%)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Custom Styles, Keyframes & Twin Tokens -->
+  <style>
+    :root {
+      --bg: #05070a;
+      --panel: #090e15;
+      --line: rgba(255, 255, 255, 0.08);
+      --acid: #d1ff56;
+      --cyan: #00f2fe;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: #f3f6f8;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: #d1ff56;
+      color: #05070a;
+    }
+
+    /* Custom Futuristic Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #05070a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #d1ff56;
+    }
+
+    /* Noise & Grain Background */
+    .grain {
+      position: fixed;
+      inset: 0;
+      opacity: 0.035;
+      pointer-events: none;
+      z-index: 1;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Subtle Perspective Matrix Grid */
+    .grid-matrix {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 80%);
+      z-index: 0;
+    }
+
+    /* Glass Panels */
+    .glass-panel {
+      background: rgba(9, 14, 21, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-panel-glow {
+      background: rgba(9, 14, 21, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 242, 254, 0.05);
+    }
+
+    .text-glow-acid {
+      text-shadow: 0 0 20px rgba(209, 255, 86, 0.5);
+    }
+    .text-glow-cyan {
+      text-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+    }
+
+    /* Portrait 3D & Aesthetics */
+    .portrait-stage {
+      perspective: 1000px;
+      transform-style: preserve-3d;
+    }
+    .portrait-card {
+      transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+    }
+    .portrait-card:hover {
+      box-shadow: 0 25px 60px rgba(0, 242, 254, 0.15), 0 0 40px rgba(209, 255, 86, 0.1);
+    }
+    .portrait-image-mask {
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 82%, rgba(0,0,0,0) 100%);
+    }
+
+    /* Animations */
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 0; }
+      100% { transform: scale(0.95); opacity: 0; }
+    }
+    .pulse-ring-anim {
+      animation: pulse-ring 2.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+
+    @keyframes badge-float {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-7px) rotate(1deg); }
+    }
+    .plant-badge-anim {
+      animation: badge-float 3.8s ease-in-out infinite;
+    }
+
+    @keyframes shimmer-move {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .shimmer-text {
+      background: linear-gradient(90deg, #f3f6f8 0%, #00f2fe 30%, #d1ff56 70%, #f3f6f8 100%);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shimmer-move 7s linear infinite;
+    }
+
+    /* Click Ripple */
+    .click-ripple-circle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      width: 10px;
+      height: 10px;
+      border: 1.5px solid var(--acid);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: ripple-pop 0.6s ease-out forwards;
+    }
+    @keyframes ripple-pop {
+      0% { width: 10px; height: 10px; opacity: 1; box-shadow: 0 0 10px #d1ff56; }
+      100% { width: 90px; height: 90px; opacity: 0; box-shadow: 0 0 25px rgba(209,255,86,0); }
+    }
+
+    /* Custom Cursor */
+    #custom-cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 8px;
+      background-color: var(--cyan);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background-color 0.2s;
+    }
+    #custom-cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(0, 242, 254, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s ease-out, width 0.2s, height 0.2s, border-color 0.2s;
+    }
+    @media (max-width: 768px) {
+      #custom-cursor-dot, #custom-cursor-ring { display: none !important; }
+    }
+  </style>
+</head>
+<body class="relative min-h-screen bg-[#05070a] text-[#f3f6f8] font-sans antialiased selection:bg-[#d1ff56] selection:text-black">
+
+  <!-- Visual Background Overlays -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="grid-matrix" aria-hidden="true"></div>
+
+  <!-- Interactive Custom Cursor -->
+  <div id="custom-cursor-dot"></div>
+  <div id="custom-cursor-ring"></div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 lg:px-8 pt-4 pb-2" id="navbar">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3.5 rounded-2xl border border-white/10 bg-[#090e15]/80 backdrop-blur-xl shadow-2xl transition-all duration-300">
+      <!-- Logo -->
+      <a href="#home" class="flex items-center gap-3 group">
+        <div class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-cyber-acid to-cyber-cyan p-[1px] shadow-lg shadow-cyber-cyan/20">
+          <div class="w-full h-full bg-[#080c10] rounded-[11px] flex items-center justify-center">
+            <span class="font-mono text-sm font-black text-cyber-acid group-hover:text-cyber-cyan transition-colors">NK</span>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-sm font-bold tracking-tight text-white font-sans flex items-center gap-1.5">
+            Nareshkumar A
+            <span class="w-1.5 h-1.5 rounded-full bg-cyber-acid animate-pulse"></span>
+          </span>
+          <span class="font-mono text-[10px] text-cyber-cyan">B.Tech AI &amp; DS • AI Engineering</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Items -->
+      <div class="hidden md:flex items-center gap-1 lg:gap-2">
+        <a href="#home" data-nav="home" class="nav-link px-3.5 py-1.5 rounded-lg font-mono text-xs text-gray-300 hover:text-cyber-cyan hover:bg-white/5 transition-all">01 // Home</a>
+        <a href="#about" data-nav="about" class="nav-link px-3.5 py-1.5 rounded-lg font-mono text-xs text-gray-300 hover:text-cyber-cyan hover:bg-white/5 transition-all">02 // About</a>
+        <a href="#skills" data-nav="skills" class="nav-link px-3.5 py-1.5 rounded-lg font-mono text-xs text-gray-300 hover:text-cyber-cyan hover:bg-white/5 transition-all">03 // Skills</a>
+        <a href="#projects" data-nav="projects" class="nav-link px-3.5 py-1.5 rounded-lg font-mono text-xs text-gray-300 hover:text-cyber-cyan hover:bg-white/5 transition-all">04 // Projects</a>
+        <a href="#leadership" data-nav="leadership" class="nav-link px-3.5 py-1.5 rounded-lg font-mono text-xs text-gray-300 hover:text-cyber-cyan hover:bg-white/5 transition-all">05 // Leadership</a>
+        <a href="#terminal" data-nav="terminal" class="nav-link px-3.5 py-1.5 rounded-lg font-mono text-xs text-gray-300 hover:text-cyber-cyan hover:bg-white/5 transition-all">06 // Terminal</a>
+        <a href="#contact" data-nav="contact" class="nav-link px-3.5 py-1.5 rounded-lg font-mono text-xs text-gray-300 hover:text-cyber-cyan hover:bg-white/5 transition-all">07 // Contact</a>
+      </div>
+
+      <!-- Action Button -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="#contact" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-cyber-acid to-cyber-cyan text-black font-mono text-xs font-bold tracking-wider hover:opacity-95 hover:shadow-lg hover:shadow-cyber-acid/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0">
+          <span>INITIALIZE</span>
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Hamburger -->
+      <button id="mobile-menu-toggle" aria-label="Toggle menu" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-colors">
+        <svg id="hamburger-icon" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        <svg id="close-icon" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-drawer" class="hidden md:hidden mt-2 p-5 rounded-2xl border border-white/10 bg-[#090e15]/95 backdrop-blur-2xl shadow-2xl flex flex-col gap-3">
+      <a href="#home" class="mobile-nav-link text-sm font-mono py-2 text-gray-300 hover:text-cyber-acid border-b border-white/5">01 // Home</a>
+      <a href="#about" class="mobile-nav-link text-sm font-mono py-2 text-gray-300 hover:text-cyber-acid border-b border-white/5">02 // About</a>
+      <a href="#skills" class="mobile-nav-link text-sm font-mono py-2 text-gray-300 hover:text-cyber-acid border-b border-white/5">03 // Skills</a>
+      <a href="#projects" class="mobile-nav-link text-sm font-mono py-2 text-gray-300 hover:text-cyber-acid border-b border-white/5">04 // Projects</a>
+      <a href="#leadership" class="mobile-nav-link text-sm font-mono py-2 text-gray-300 hover:text-cyber-acid border-b border-white/5">05 // Leadership</a>
+      <a href="#terminal" class="mobile-nav-link text-sm font-mono py-2 text-gray-300 hover:text-cyber-acid border-b border-white/5">06 // Terminal</a>
+      <a href="#contact" class="mobile-nav-link text-sm font-mono py-2 text-gray-300 hover:text-cyber-acid">07 // Contact</a>
+      <a href="#contact" class="mt-2 text-center py-2.5 rounded-xl bg-cyber-acid text-black font-mono text-xs font-bold">LET'S TALK ↗</a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="relative z-10 pt-20">
+
+    <!-- 01: HERO SECTION -->
+    <section id="home" class="relative min-h-[92vh] flex items-center justify-center pt-16 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <!-- Glow Orbs -->
+      <div class="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-cyber-cyan/10 blur-[130px] pointer-events-none"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-cyber-acid/10 blur-[140px] pointer-events-none"></div>
+
+      <div class="relative w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Left: Copy & Call To Action -->
+        <div class="lg:col-span-7 flex flex-col items-start text-left">
+          <!-- Status Badge -->
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-cyber-acid/30 bg-cyber-acid/5 text-cyber-acid text-xs font-mono mb-6 backdrop-blur-md">
+            <span class="w-2 h-2 rounded-full bg-cyber-acid animate-ping"></span>
+            <span class="font-semibold tracking-wider uppercase">B.TECH AI &amp; DATA SCIENCE // KATHIR COLLEGE OF ENGINEERING</span>
+          </div>
+
+          <!-- Main Heading -->
+          <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight text-white uppercase leading-[0.92] mb-6">
+            NARESH<br />
+            <span class="shimmer-text">KUMAR A</span>
+          </h1>
+
+          <!-- Role Subtitle -->
+          <div class="flex items-center gap-3 font-mono text-sm sm:text-base text-cyber-acid mb-6">
+            <span class="w-2.5 h-2.5 rounded-sm bg-cyber-acid rotate-45"></span>
+            <span class="font-bold tracking-widest uppercase">AI ENGINEERING // AI-DRIVEN SECURITY</span>
+            <span class="text-gray-500">•</span>
+            <span class="text-gray-400 font-sans text-xs sm:text-sm">Coimbatore, Tamil Nadu</span>
+          </div>
+
+          <!-- Bio Pitch -->
+          <p class="text-gray-300 text-base sm:text-lg max-w-xl leading-relaxed mb-8">
+            AI &amp; Data Science student passionate about <strong class="text-white font-semibold">modern AI and Innovation</strong>. Exploring <span class="text-cyber-acid font-medium">Generative AI, ML, RAG, AI Agents</span>, and <span class="text-cyber-cyan font-medium">Cybersecurity</span> to build intelligent solutions for real-world challenges.
+          </p>
+
+          <!-- Primary CTAs -->
+          <div class="flex flex-wrap items-center gap-4 mb-6">
+            <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-cyber-acid text-black font-mono text-xs sm:text-sm font-black tracking-wider uppercase shadow-lg shadow-cyber-acid/20 hover:bg-[#e2ff85] hover:scale-[1.02] active:scale-[0.98] transition-all">
+              <span>EXPLORE SELECTED WORK</span>
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+            </a>
+
+            <button id="download-resume-btn" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-white/15 bg-white/5 text-white font-mono text-xs sm:text-sm font-bold tracking-wider hover:border-cyber-cyan hover:text-cyber-cyan hover:bg-cyber-cyan/5 transition-all">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              <span id="resume-btn-text">DOWNLOAD RESUME</span>
+            </button>
+          </div>
+
+          <!-- Quick Metrics Bar -->
+          <div class="grid grid-cols-3 gap-6 pt-6 border-t border-white/10 w-full max-w-lg font-mono">
+            <div>
+              <div class="text-2xl sm:text-3xl font-black text-white">8.09</div>
+              <div class="text-[11px] text-gray-400 uppercase tracking-wider mt-0.5">CGPA (4 Sems)</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-black text-cyber-acid">05+</div>
+              <div class="text-[11px] text-gray-400 uppercase tracking-wider mt-0.5">Projects Built</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-black text-cyber-cyan">05</div>
+              <div class="text-[11px] text-gray-400 uppercase tracking-wider mt-0.5">Certifications</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: 3D Interactive Portrait & Cyber Card -->
+        <div class="lg:col-span-5 flex justify-center items-center portrait-stage">
+          <div class="relative portrait-card w-full max-w-[420px] aspect-[4/5] rounded-3xl border border-white/15 bg-gradient-to-b from-[#111823] via-[#090e15] to-[#05070a] p-3 shadow-2xl" id="hero-portrait-card">
+            <!-- Glowing disc behind -->
+            <div class="absolute inset-4 rounded-2xl bg-gradient-to-tr from-cyber-cyan/20 to-cyber-acid/20 blur-2xl -z-10"></div>
+
+            <!-- Portrait Frame -->
+            <div class="relative w-full h-full rounded-2xl overflow-hidden border border-white/10 bg-[#070b10] flex items-end justify-center">
+              <img src="nareshkumar-portrait.png" alt="Nareshkumar A — AI Engineer & Web Designer" class="w-full h-full object-cover object-top portrait-image-mask grayscale-[0.15] hover:grayscale-0 transition-all duration-700" onerror="this.onerror=null; this.src='public/nareshkumar-portrait.png';" />
+
+              <!-- Overlay Vignette -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#05070a] via-transparent to-transparent pointer-events-none"></div>
+
+              <!-- Top Left Badge -->
+              <div class="absolute top-4 left-4 px-3 py-1.5 rounded-lg bg-black/60 border border-white/15 backdrop-blur-md font-mono text-[10px] tracking-wider text-gray-300">
+                AI ENGINEER // ML ARCHITECT
+              </div>
+
+              <!-- Top Right Badge -->
+              <div class="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyber-acid/10 border border-cyber-acid/30 backdrop-blur-md font-mono text-[10px] tracking-wider text-cyber-acid">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyber-acid"></span>
+                <span>DEPLOYED</span>
+              </div>
+
+              <!-- Bottom Floating Growth Badge -->
+              <div class="absolute bottom-5 right-5 plant-badge-anim flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#090e15]/90 border border-cyber-acid/40 text-cyber-acid font-mono text-xs shadow-xl backdrop-blur-md">
+                <span class="text-sm">🌱</span>
+                <span class="font-bold tracking-widest">GROW MODE</span>
+              </div>
+
+              <!-- Bottom Left Tag -->
+              <div class="absolute bottom-5 left-5 font-mono text-[10px] text-gray-400 tracking-wider">
+                <span class="text-white font-bold">BUILD</span> • <span class="text-cyber-cyan font-bold">TRAIN</span> • <span class="text-cyber-acid font-bold">DEPLOY</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02: ABOUT IDENTITY SECTION -->
+    <section id="about" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 border-t border-white/10">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="font-mono text-xs text-cyber-acid font-bold tracking-widest uppercase">02 / ABOUT IDENTITY</span>
+        <div class="h-[1px] w-24 bg-gradient-to-r from-cyber-acid/40 to-transparent"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
+        <div class="lg:col-span-5">
+          <h2 class="text-4xl sm:text-6xl font-black tracking-tight text-white uppercase leading-[0.95]">
+            WHO I <br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-acid to-cyber-cyan">AM?</span>
+          </h2>
+          <p class="font-mono text-xs text-gray-400 mt-4 tracking-wider uppercase">ENGINEERING PRACTICAL INTELLIGENCE WITH HUMAN EMPATHY</p>
+        </div>
+
+        <div class="lg:col-span-7 flex flex-col gap-6 text-gray-300 text-base sm:text-lg leading-relaxed">
+          <p>
+            I am <strong class="text-white font-semibold">Nareshkumar A</strong>, an AI &amp; Data Science student at Kathir College of Engineering, passionate about modern AI, innovation, and practical problem solving.
+          </p>
+          <p>
+            Exploring <span class="text-cyber-acid font-medium">Generative AI, ML, RAG, AI Agents</span>, and <span class="text-cyber-cyan font-medium">Cybersecurity</span> to build intelligent solutions for real-world challenges. From developing high-precision machine learning classifiers for phishing detection to building bilingual voice assistants with Gemini API and solo RAG academic assistants.
+          </p>
+          <!-- Education Card -->
+          <div class="p-4 rounded-2xl bg-white/[0.03] border border-cyber-cyan/30 mt-2">
+            <div class="flex items-center justify-between font-mono text-xs text-cyber-acid font-bold mb-1">
+              <span>EDUCATION // 2024–2028 (ONGOING)</span>
+              <span class="px-2 py-0.5 rounded bg-cyber-acid/10 border border-cyber-acid/30 text-cyber-acid">CGPA: 8.09</span>
+            </div>
+            <h4 class="text-white font-bold text-base">Kathir College of Engineering</h4>
+            <p class="font-mono text-xs text-cyber-cyan">B.Tech – Artificial Intelligence and Data Science</p>
+            <p class="text-xs text-gray-400 mt-1">Coimbatore, Tamil Nadu • 4 semesters completed • Active in hackathons, technical events, and project-based learning.</p>
+          </div>
+          <!-- Areas of Interest -->
+          <div class="pt-2">
+            <span class="font-mono text-[10px] text-gray-400 uppercase tracking-wider block mb-2">// AREAS OF INTEREST</span>
+            <div class="flex flex-wrap gap-1.5 font-mono text-xs">
+              <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-300">AI Engineering</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-300">AI-Driven Security</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-300">Machine Learning</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-300">Ethical Hacking</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-300">AI Application Development</span>
+              <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-300">AI Automation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Identity 4 Pillars Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Pillar 1 -->
+        <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-cyber-acid/50 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-cyber-acid/10 border border-cyber-acid/30 flex items-center justify-center text-cyber-acid text-xl mb-4 group-hover:scale-110 transition-transform">
+            🧠
+          </div>
+          <div class="font-mono text-[10px] text-cyber-acid tracking-widest uppercase mb-1">INTELLIGENCE</div>
+          <h3 class="text-xl font-bold text-white mb-2">AI Engineer</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Architecting statistical ML classifiers, deep computer vision pipelines, and production RAG systems.</p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-cyber-cyan/50 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-cyber-cyan/10 border border-cyber-cyan/30 flex items-center justify-center text-cyber-cyan text-xl mb-4 group-hover:scale-110 transition-transform">
+            💻
+          </div>
+          <div class="font-mono text-[10px] text-cyber-cyan tracking-widest uppercase mb-1">INTERFACE</div>
+          <h3 class="text-xl font-bold text-white mb-2">Web Designer</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Crafting modern, reactive, accessible web interfaces that turn complex algorithms into frictionless UX.</p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-cyber-blue/50 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-cyber-blue/10 border border-cyber-blue/30 flex items-center justify-center text-cyber-blue text-xl mb-4 group-hover:scale-110 transition-transform">
+            ⚡
+          </div>
+          <div class="font-mono text-[10px] text-cyber-blue tracking-widest uppercase mb-1">LOGIC</div>
+          <h3 class="text-xl font-bold text-white mb-2">Problem Solver</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Deconstructing ambiguous technical bottlenecks into modular, testable, and scalable software solutions.</p>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="glass-panel p-6 rounded-2xl border border-white/10 hover:border-cyber-purple/50 transition-all group">
+          <div class="w-12 h-12 rounded-xl bg-cyber-purple/10 border border-cyber-purple/30 flex items-center justify-center text-cyber-purple text-xl mb-4 group-hover:scale-110 transition-transform">
+            👑
+          </div>
+          <div class="font-mono text-[10px] text-cyber-purple tracking-widest uppercase mb-1">LEADERSHIP</div>
+          <h3 class="text-xl font-bold text-white mb-2">Team Leader</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">Guiding high-velocity teams through hackathons and university departmental engineering initiatives.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03: CAPABILITIES & SKILLS SECTION -->
+    <section id="skills" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 border-t border-white/10">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="font-mono text-xs text-cyber-acid font-bold tracking-widest uppercase">03 // CAPABILITY MATRIX</span>
+        <div class="h-[1px] w-24 bg-gradient-to-r from-cyber-acid/40 to-transparent"></div>
+      </div>
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <h2 class="text-4xl sm:text-6xl font-black tracking-tight text-white uppercase leading-[0.95]">
+            TECHNICAL <br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-cyber-acid">CAPABILITIES.</span>
+          </h2>
+        </div>
+        <p class="text-gray-400 text-sm max-w-md font-mono">
+          Rigorous engineering across AI models, modern full-stack web architectures, and production infrastructure.
+        </p>
+      </div>
+
+      <!-- Skills Cards Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- 01: AI / ML Core -->
+        <div class="glass-panel p-8 rounded-3xl border border-white/10 hover:border-cyber-acid/40 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-mono text-2xl font-black text-cyber-acid">01</span>
+              <span class="px-3 py-1 rounded-full border border-cyber-acid/30 bg-cyber-acid/10 font-mono text-[10px] text-cyber-acid">CORE AI</span>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2">AI / ML Core</h3>
+            <p class="text-gray-400 text-xs font-mono mb-6">Statistical Modeling, Neural Networks & Machine Learning</p>
+
+            <div class="space-y-4">
+              <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                <div class="flex justify-between text-xs font-mono text-white mb-1">
+                  <span>Python</span>
+                  <span class="text-cyber-acid">Advanced</span>
+                </div>
+                <p class="text-gray-400 text-xs">Primary language for ML modeling, data structures, automation, and API backends.</p>
+              </div>
+              <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                <div class="flex justify-between text-xs font-mono text-white mb-1">
+                  <span>Machine Learning</span>
+                  <span class="text-cyber-acid">Advanced</span>
+                </div>
+                <p class="text-gray-400 text-xs">Supervised/unsupervised algorithms, regression, classification, clustering, metrics.</p>
+              </div>
+              <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                <div class="flex justify-between text-xs font-mono text-white mb-1">
+                  <span>Computer Vision</span>
+                  <span class="text-cyber-acid">Proficient</span>
+                </div>
+                <p class="text-gray-400 text-xs">OpenCV, deep CNN architectures, medical imaging diagnostics, preprocessing.</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 flex flex-wrap gap-1.5">
+            <span class="px-2.5 py-1 rounded-md bg-white/5 font-mono text-[10px] text-gray-300">PyTorch</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 font-mono text-[10px] text-gray-300">Scikit-Learn</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 font-mono text-[10px] text-gray-300">OpenCV</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 font-mono text-[10px] text-gray-300">NumPy</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 font-mono text-[10px] text-gray-300">Pandas</span>
+          </div>
+        </div>
+
+        <!-- 02: GenAI & RAG Systems -->
+        <div class="glass-panel p-8 rounded-3xl border border-white/10 hover:border-cyber-cyan/40 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-mono text-2xl font-black text-cyber-cyan">02</span>
+              <span class="px-3 py-1 rounded-full border border-cyber-cyan/30 bg-cyber-cyan/10 font-mono text-[10px] text-cyber-cyan">RAG ARCHITECT</span>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2">GenAI & RAG</h3>
+            <p class="text-gray-400 text-xs font-mono mb-6">LLM Orchestration, Vector Stores & Autonomous Agents</p>
+
+            <div class="space-y-4">
+              <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                <div class="flex justify-between text-xs font-mono text-white mb-1">
+                  <span>RAG Architectures</span>
+                  <span class="text-cyber-cyan">Advanced</span>
+                </div>
+                <p class="text-gray-400 text-xs">Retrieval-Augmented Generation, chunking, hybrid search, source citation.</p>
+              </div>
+              <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                <div class="flex justify-between text-xs font-mono text-white mb-1">
+                  <span>Vector Databases</span>
+                  <span class="text-cyber-cyan">Advanced</span>
+                </div>
+                <p class="text-gray-400 text-xs">ChromaDB, Pinecone, FAISS high-throughput semantic similarity querying.</p>
+              </div>
+              <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                <div class="flex justify-between text-xs font-mono text-white mb-1">
+                  <span>Prompt Engineering</span>
+                  <span class="text-cyber-cyan">Advanced</span>
+                </div>
+                <p class="text-gray-400 text-xs">Few-shot prompting, chain-of-thought reasoning, hallucination reduction.</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 flex flex-wrap gap-1.5">
+            <span class="px-2.5 py-1 rounded-md bg-white/5 font-mono text-[10px] text-gray-300">LangChain</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 font-mono text-[10px] text-gray-300">ChromaDB</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 font-mono text-[10px] text-gray-300">Embeddings</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 font-mono text-[10px] text-gray-300">FAISS</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 font-mono text-[10px] text-gray-300">LLM Agents</span>
+          </div>
+        </div>
+
+        <!-- 03: Modern Web Engineering -->
+        <div class="glass-panel p-8 rounded-3xl border border-white/10 hover:border-cyber-blue/40 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-mono text-2xl font-black text-cyber-blue">03</span>
+              <span class="px-3 py-1 rounded-full border border-cyber-blue/30 bg-cyber-blue/10 font-mono text-[10px] text-cyber-blue">FULL STACK</span>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2">Web Engineering</h3>
+            <p class="text-gray-400 text-xs font-mono mb-6">High-Performance Interfaces, Responsive Architecture & UI/UX</p>
+
+            <div class="space-y-4">
+              <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                <div class="flex justify-between text-xs font-mono text-white mb-1">
+                  <span>Next.js & React</span>
+                  <span class="text-cyber-blue">Advanced</span>
+                </div>
+                <p class="text-gray-400 text-xs">App Router, SSR, SSG, custom state hooks, and component composition.</p>
+              </div>
+              <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                <div class="flex justify-between text-xs font-mono text-white mb-1">
+                  <span>TypeScript</span>
+                  <span class="text-cyber-blue">Advanced</span>
+                </div>
+                <p class="text-gray-400 text-xs">Strict typing, generic interfaces, compile-time safety, robust patterns.</p>
+              </div>
+              <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5">
+                <div class="flex justify-between text-xs font-mono text-white mb-1">
+                  <span>Tailwind CSS</span>
+                  <span class="text-cyber-blue">Advanced</span>
+                </div>
+                <p class="text-gray-400 text-xs">Responsive design systems, micro-interactions, dark mode tokens.</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/5 flex flex-wrap gap-1.5">
+            <span class="px-2.5 py-1 rounded-md bg-white/5 font-mono text-[10px] text-gray-300">Next.js 15</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 font-mono text-[10px] text-gray-300">React 19</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 font-mono text-[10px] text-gray-300">TypeScript</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 font-mono text-[10px] text-gray-300">Node.js</span>
+            <span class="px-2.5 py-1 rounded-md bg-white/5 font-mono text-[10px] text-gray-300">Tailwind</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04: SELECTED WORK & PROJECT ARCHIVE SECTION -->
+    <section id="projects" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 border-t border-white/10">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="font-mono text-xs text-cyber-acid font-bold tracking-widest uppercase">04 // SELECTED SYSTEMS</span>
+        <div class="h-[1px] w-24 bg-gradient-to-r from-cyber-acid/40 to-transparent"></div>
+      </div>
+
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div>
+          <h2 class="text-4xl sm:text-6xl font-black tracking-tight text-white uppercase leading-[0.95]">
+            PROJECT <br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-acid to-cyber-cyan">ARCHIVE.</span>
+          </h2>
+        </div>
+        <p class="text-gray-400 text-sm max-w-md font-mono">
+          Flagship production architectures bridging machine intelligence with high-fidelity digital interfaces. Click any project for the deep architectural case study.
+        </p>
+      </div>
+
+      <!-- Projects Container -->
+      <div class="space-y-8" id="projects-container">
+        <!-- Dynamically rendered via JS with full interactive case study modal trigger -->
+      </div>
+    </section>
+
+    <!-- 05: LEADERSHIP & EXPERIENCE SECTION -->
+    <section id="leadership" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 border-t border-white/10">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="font-mono text-xs text-cyber-acid font-bold tracking-widest uppercase">05 // LEADERSHIP COMMAND</span>
+        <div class="h-[1px] w-24 bg-gradient-to-r from-cyber-acid/40 to-transparent"></div>
+      </div>
+
+      <div class="mb-12">
+        <h2 class="text-4xl sm:text-6xl font-black tracking-tight text-white uppercase leading-[0.95]">
+          LEADING <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-cyber-acid">IN MOTION.</span>
+        </h2>
+        <p class="text-gray-400 text-sm max-w-lg mt-3 font-mono">
+          Organizing teams, coordinating academic symposiums, and steering competitive hackathons under intense velocity.
+        </p>
+      </div>
+
+      <!-- Command Center Network Graph -->
+      <div class="relative w-full h-[480px] sm:h-[540px] rounded-3xl border border-white/10 bg-[#080c10] overflow-hidden p-6 mb-12 flex items-center justify-center">
+        <!-- Circular Radial Radar -->
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,242,254,0.06),transparent_50%)]"></div>
+        <div class="absolute w-[360px] h-[360px] rounded-full border border-cyber-cyan/15 pulse-ring-anim"></div>
+        <div class="absolute w-[240px] h-[240px] rounded-full border border-cyber-acid/15"></div>
+
+        <!-- SVG Connection Lines -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none stroke-cyber-cyan/20 stroke-1 stroke-dasharray-[4,4]">
+          <line x1="50%" y1="50%" x2="22%" y2="24%" stroke="rgba(0,242,254,0.3)" />
+          <line x1="50%" y1="50%" x2="78%" y2="24%" stroke="rgba(209,255,86,0.3)" />
+          <line x1="50%" y1="50%" x2="22%" y2="76%" stroke="rgba(79,172,254,0.3)" />
+          <line x1="50%" y1="50%" x2="78%" y2="76%" stroke="rgba(157,78,221,0.3)" />
+        </svg>
+
+        <!-- Center Lead Core -->
+        <div class="relative z-20 w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-br from-cyber-acid to-cyber-cyan p-[2px] shadow-[0_0_50px_rgba(209,255,86,0.35)]">
+          <div class="w-full h-full rounded-full bg-[#080c10] flex flex-col items-center justify-center text-center p-2">
+            <span class="font-mono text-xl sm:text-2xl font-black text-cyber-acid">NK</span>
+            <span class="font-mono text-[9px] text-gray-300 font-bold uppercase tracking-wider">COMMAND</span>
+          </div>
+        </div>
+
+        <!-- Node 1: Department Secretary (Top Left) -->
+        <div class="absolute top-[12%] sm:top-[16%] left-[6%] sm:left-[14%] z-20 glass-panel p-3 sm:p-4 rounded-2xl border border-cyber-cyan/30 max-w-[170px] sm:max-w-[210px] hover:scale-105 transition-transform">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-2 h-2 rounded-full bg-cyber-cyan"></span>
+            <span class="font-mono text-[10px] text-cyber-cyan font-bold tracking-widest uppercase">ROLE 01</span>
+          </div>
+          <div class="text-sm font-bold text-white">Department Secretary</div>
+          <p class="text-[11px] text-gray-400 font-mono mt-0.5">500+ Students Coordinated</p>
+        </div>
+
+        <!-- Node 2: 4+ Projects Led (Top Right) -->
+        <div class="absolute top-[12%] sm:top-[16%] right-[6%] sm:right-[14%] z-20 glass-panel p-3 sm:p-4 rounded-2xl border border-cyber-acid/30 max-w-[170px] sm:max-w-[210px] hover:scale-105 transition-transform">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-2 h-2 rounded-full bg-cyber-acid"></span>
+            <span class="font-mono text-[10px] text-cyber-acid font-bold tracking-widest uppercase">DELIVERY</span>
+          </div>
+          <div class="text-sm font-bold text-white">4+ Projects Led</div>
+          <p class="text-[11px] text-gray-400 font-mono mt-0.5">End-to-End System Architect</p>
+        </div>
+
+        <!-- Node 3: 5+ Hackathons Led (Bottom Left) -->
+        <div class="absolute bottom-[12%] sm:bottom-[16%] left-[6%] sm:left-[14%] z-20 glass-panel p-3 sm:p-4 rounded-2xl border border-cyber-blue/30 max-w-[170px] sm:max-w-[210px] hover:scale-105 transition-transform">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-2 h-2 rounded-full bg-cyber-blue"></span>
+            <span class="font-mono text-[10px] text-cyber-blue font-bold tracking-widest uppercase">SPRINTS</span>
+          </div>
+          <div class="text-sm font-bold text-white">5+ Hackathons Led</div>
+          <p class="text-[11px] text-gray-400 font-mono mt-0.5">High-Pressure Rapid MVPs</p>
+        </div>
+
+        <!-- Node 4: Events Organiser (Bottom Right) -->
+        <div class="absolute bottom-[12%] sm:bottom-[16%] right-[6%] sm:right-[14%] z-20 glass-panel p-3 sm:p-4 rounded-2xl border border-cyber-purple/30 max-w-[170px] sm:max-w-[210px] hover:scale-105 transition-transform">
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-2 h-2 rounded-full bg-cyber-purple"></span>
+            <span class="font-mono text-[10px] text-cyber-purple font-bold tracking-widest uppercase">IMPACT</span>
+          </div>
+          <div class="text-sm font-bold text-white">Event Operations</div>
+          <p class="text-[11px] text-gray-400 font-mono mt-0.5">Workshops, Symposiums & Talks</p>
+        </div>
+      </div>
+
+      <!-- 3D INTERACTIVE SHOWCASE & CREDENTIALS VAULT (STATICALLY EMBEDDED) -->
+      <div id="cf-widget" class="relative w-full max-w-4xl mx-auto rounded-3xl bg-[#070c12]/95 border border-cyber-cyan/30 shadow-[0_15px_50px_rgba(0,0,0,0.85)] backdrop-blur-2xl overflow-hidden flex flex-col font-sans mt-8 mb-4">
+        <!-- Header -->
+        <div class="flex items-center justify-between px-5 py-3.5 bg-[#0a111a]/90 border-b border-white/10">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-cyber-acid animate-pulse"></span>
+            <span class="font-mono text-xs font-bold text-cyber-acid tracking-wider uppercase">3D SHOWCASE // VAULT</span>
+            <span class="font-mono text-[10px] text-cyber-cyan px-2 py-0.5 rounded bg-cyber-cyan/10 border border-cyber-cyan/30">12 CREDENTIALS</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="cf-drawer-toggle" type="button" title="Show list of all subwidgets" class="p-2 rounded-lg bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 transition-colors flex items-center gap-1.5 font-mono text-xs">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+              <span>LIST VIEW</span>
+            </button>
+            <button id="cf-expand-btn" type="button" title="Expand to fullscreen" class="p-2 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyber-cyan/50 text-gray-300 hover:text-white transition-colors flex items-center gap-1.5 font-mono text-xs">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+              <span>EXPAND</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Drawer Overlay -->
+        <div id="cf-drawer" class="hidden bg-[#05080c] border-b border-white/10 max-h-64 overflow-y-auto p-3 space-y-1.5 z-20">
+          <div class="flex items-center justify-between px-1 pb-2 border-b border-white/5">
+            <span class="font-mono text-xs text-gray-400 uppercase tracking-wider">ALL SHOWCASE ITEMS (12)</span>
+            <button id="cf-drawer-close" type="button" class="text-gray-400 hover:text-white text-xs px-2 py-0.5 rounded bg-white/5">✕ CLOSE</button>
+          </div>
+          <div id="cf-drawer-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2"></div>
+        </div>
+
+        <!-- 3D Stage -->
+        <div class="p-4 sm:p-6 pb-4 flex flex-col items-center">
+          <div id="cf-stage" class="relative w-full h-[220px] flex items-center justify-center select-none" style="perspective: 1000px; transform-style: preserve-3d;"></div>
+
+          <!-- Controls -->
+          <div class="w-full max-w-md mt-4 px-2 flex flex-col items-center gap-2.5">
+            <div class="w-full h-1 bg-white/10 rounded-full overflow-hidden relative">
+              <div id="cf-progress-bar" class="h-full bg-gradient-to-r from-cyber-cyan via-cyber-acid to-cyber-acid w-0"></div>
+            </div>
+            <div class="w-full flex items-center justify-between gap-3 font-mono text-xs text-gray-400">
+              <button id="cf-prev-btn" type="button" aria-label="Previous photo" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyber-cyan/50 text-gray-300 hover:text-white transition-colors">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              </button>
+              <div class="flex items-center gap-2.5">
+                <button id="cf-play-btn" type="button" class="px-3 py-1.5 rounded-xl border text-xs font-mono flex items-center gap-1.5 transition-colors bg-cyber-acid/10 border-cyber-acid/40 text-cyber-acid">
+                  <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                  <span class="text-[10px]">AUTOPLAY</span>
+                </button>
+                <span id="cf-counter" class="text-xs text-gray-300 font-bold px-2.5 py-1 rounded bg-black/60 border border-white/10">01 / 11</span>
+              </div>
+              <button id="cf-next-btn" type="button" aria-label="Next photo" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyber-cyan/50 text-gray-300 hover:text-white transition-colors">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Footer Caption -->
+          <div class="w-full mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono">
+            <span id="cf-active-title" class="text-gray-300 font-bold truncate max-w-[280px]">Nareshkumar A</span>
+            <button id="cf-open-active-btn" type="button" class="text-cyber-cyan hover:text-cyber-acid flex items-center gap-1.5 font-bold">
+              <span>INSPECT</span>
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06: INTERACTIVE AI TERMINAL SECTION -->
+    <section id="terminal" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 border-t border-white/10">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="font-mono text-xs text-cyber-acid font-bold tracking-widest uppercase">06 // SYSTEM SHELL</span>
+        <div class="h-[1px] w-24 bg-gradient-to-r from-cyber-acid/40 to-transparent"></div>
+      </div>
+
+      <div class="mb-8">
+        <h2 class="text-4xl sm:text-6xl font-black tracking-tight text-white uppercase leading-[0.95]">
+          SYSTEM <br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-acid to-cyber-cyan">TERMINAL.</span>
+        </h2>
+        <p class="text-gray-400 text-sm max-w-lg mt-3 font-mono">
+          Simulate shell executions, inspect neural weights, query project metadata, and run threat diagnostics directly.
+        </p>
+      </div>
+
+      <!-- Terminal Window Component -->
+      <div class="w-full max-w-4xl mx-auto rounded-2xl border border-white/15 bg-[#080c10] shadow-2xl overflow-hidden font-mono">
+        <!-- Title Bar -->
+        <div class="px-5 py-3.5 border-b border-white/10 bg-[#0c1219] flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+            <span class="text-xs text-gray-400 font-bold ml-2">NARESHKUMAR_AI_CORE // v2.6</span>
+          </div>
+          <div class="flex items-center gap-2 text-[11px] text-cyber-acid">
+            <span class="w-2 h-2 rounded-full bg-cyber-acid animate-ping"></span>
+            <span>SYSTEM ONLINE</span>
+          </div>
+        </div>
+
+        <!-- Terminal Quick Action Buttons -->
+        <div class="px-5 py-2.5 bg-[#0a0f15] border-b border-white/5 flex flex-wrap gap-2 text-xs">
+          <button class="terminal-quick-btn px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyber-cyan hover:bg-cyber-cyan/10 hover:border-cyber-cyan transition-colors" data-cmd="initialize_ai()">initialize_ai()</button>
+          <button class="terminal-quick-btn px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyber-acid hover:bg-cyber-acid/10 hover:border-cyber-acid transition-colors" data-cmd="load_projects()">load_projects()</button>
+          <button class="terminal-quick-btn px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyber-blue hover:bg-cyber-blue/10 hover:border-cyber-blue transition-colors" data-cmd="analyze_skills()">analyze_skills()</button>
+          <button class="terminal-quick-btn px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-cyber-purple hover:bg-cyber-purple/10 hover:border-cyber-purple transition-colors" data-cmd="leadership_mode.activate()">leadership_mode.activate()</button>
+          <button class="terminal-quick-btn px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-yellow-400 hover:bg-yellow-400/10 hover:border-yellow-400 transition-colors" data-cmd="security_scan()">security_scan()</button>
+          <button class="terminal-quick-btn px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-gray-400 hover:text-white transition-colors" data-cmd="clear">clear</button>
+        </div>
+
+        <!-- Terminal Log Output Area -->
+        <div id="terminal-body" class="p-6 text-xs sm:text-sm text-gray-300 space-y-3 min-h-[300px] max-h-[420px] overflow-y-auto leading-relaxed">
+          <div class="text-cyber-acid">⚡ System online. Welcome to Nareshkumar AI Terminal shell.</div>
+          <div class="text-gray-400">Type a command below or click any of the shortcut buttons above. Try 'help'.</div>
+        </div>
+
+        <!-- Terminal Input Prompt -->
+        <form id="terminal-form" class="px-5 py-3 border-t border-white/10 bg-[#090e15] flex items-center gap-3">
+          <span class="text-cyber-acid font-bold">›</span>
+          <input type="text" id="terminal-input" placeholder="Type a command (e.g. initialize_ai(), whoami, help)..." class="w-full bg-transparent text-sm text-white focus:outline-none placeholder-gray-600" autocomplete="off" />
+          <button type="submit" class="px-3 py-1 rounded bg-cyber-acid text-black font-bold text-xs hover:opacity-90">RUN</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- 07: CONTACT SECTION -->
+    <section id="contact" class="relative py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 border-t border-white/10">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="font-mono text-xs text-cyber-acid font-bold tracking-widest uppercase">07 // INITIATE CONTACT</span>
+        <div class="h-[1px] w-24 bg-gradient-to-r from-cyber-acid/40 to-transparent"></div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <!-- Left Column: Direct Links -->
+        <div class="lg:col-span-6 flex flex-col items-start">
+          <h2 class="text-4xl sm:text-6xl font-black tracking-tight text-white uppercase leading-[0.92] mb-6">
+            LET'S BUILD <br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan via-white to-cyber-acid">
+              SOMETHING INTELLIGENT.
+            </span>
+          </h2>
+          <p class="text-gray-300 text-base leading-relaxed mb-8 max-w-md">
+            Whether you have a breakthrough project in mind, an engineering role, or want to collaborate on AI and modern web architectures, my inbox is open.
+          </p>
+
+          <!-- Contact Cards -->
+          <div class="w-full max-w-md space-y-3 mb-6 font-mono text-xs">
+            <div class="p-4 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md">
+              <div class="text-[10px] text-gray-400 mb-1">EMAIL TRANSMISSION:</div>
+              <div class="flex items-center justify-between gap-2 mt-1">
+                <a href="mailto:nk6404250@gmail.com" class="text-cyber-cyan font-bold break-all hover:underline">nk6404250@gmail.com</a>
+                <button id="copy-email-btn" class="px-3 py-1.5 rounded-lg border border-cyber-cyan/30 bg-cyber-cyan/10 text-cyber-cyan hover:bg-cyber-cyan hover:text-black transition-all shrink-0">
+                  <span id="copy-btn-text">COPY</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md">
+              <div class="text-[10px] text-gray-400 mb-1">DIRECT PHONE / WHATSAPP:</div>
+              <div class="flex items-center justify-between gap-2 mt-1">
+                <a href="tel:+919363728989" class="text-cyber-acid font-bold hover:underline">+91 9363728989</a>
+                <span class="text-[10px] text-gray-500">COIMBATORE, TN</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md">
+              <div class="text-[10px] text-gray-400 mb-1">COLLEGE &amp; LOCATION:</div>
+              <div class="text-white font-bold mt-1">Kathir College of Engineering</div>
+              <div class="text-[11px] text-gray-400">Coimbatore, Tamil Nadu • B.Tech AI &amp; DS</div>
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div class="flex items-center gap-4">
+            <a href="https://github.com/nareshkuar" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-5 py-3 rounded-xl border border-white/10 bg-white/5 font-mono text-xs text-white hover:border-cyber-acid hover:text-cyber-acid transition-all">
+              <span>GITHUB ↗</span>
+            </a>
+            <a href="https://linkedin.com/in/nareshkuar" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-5 py-3 rounded-xl border border-white/10 bg-white/5 font-mono text-xs text-white hover:border-cyber-cyan hover:text-cyber-cyan transition-all">
+              <span>LINKEDIN ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Form -->
+        <div class="lg:col-span-6 w-full glass-panel p-8 rounded-3xl border border-white/10">
+          <form id="contact-form" class="space-y-5">
+            <div>
+              <label class="block font-mono text-xs text-gray-300 uppercase tracking-wider mb-2" for="user-name">Your Name</label>
+              <input type="text" id="user-name" required placeholder="Dr. Alex Rivera" class="w-full px-4 py-3 rounded-xl bg-[#080c10] border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-cyber-acid transition-colors font-sans text-sm" />
+            </div>
+            <div>
+              <label class="block font-mono text-xs text-gray-300 uppercase tracking-wider mb-2" for="user-email">Email Address</label>
+              <input type="email" id="user-email" required placeholder="alex@company.com" class="w-full px-4 py-3 rounded-xl bg-[#080c10] border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-cyber-cyan transition-colors font-sans text-sm" />
+            </div>
+            <div>
+              <label class="block font-mono text-xs text-gray-300 uppercase tracking-wider mb-2" for="user-message">Mission Brief / Message</label>
+              <textarea id="user-message" rows="4" required placeholder="Tell me about your project, timeline, or engineering opportunity..." class="w-full px-4 py-3 rounded-xl bg-[#080c10] border border-white/10 text-white placeholder-gray-600 focus:outline-none focus:border-cyber-acid transition-colors font-sans text-sm"></textarea>
+            </div>
+            <button type="submit" id="contact-submit-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-cyber-acid to-cyber-cyan text-black font-mono font-black text-sm tracking-wider uppercase shadow-lg shadow-cyber-acid/20 hover:opacity-95 transition-all">
+              TRANSMIT MESSAGE ↗
+            </button>
+            <div id="form-feedback" class="hidden font-mono text-xs text-center py-2"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="relative z-10 border-t border-white/10 py-12 px-4 sm:px-6 lg:px-8 bg-[#05070a]">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6 font-mono text-xs text-gray-400">
+      <div class="flex items-center gap-3">
+        <span class="font-black text-white text-sm">NK</span>
+        <span>•</span>
+        <span>NARESHKUMAR A // 2026</span>
+      </div>
+      <div>
+        <span>AI ENGINEER // WEB DESIGNER // BUILDER</span>
+      </div>
+      <div>
+        <a href="#home" class="hover:text-cyber-acid transition-colors">BACK TO TOP ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 08: CASE STUDY DEEP DIVE MODAL -->
+  <div id="project-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-xl transition-all" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl border border-cyber-cyan/30 bg-[#090e15] shadow-2xl p-6 sm:p-10 font-sans text-left">
+      <!-- Close Button -->
+      <button id="modal-close-btn" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all" aria-label="Close modal">
+        ✕
+      </button>
+
+      <!-- Eyebrow & Status -->
+      <div class="flex items-center gap-2.5 font-mono text-xs text-cyber-acid mb-2" id="modal-eyebrow">
+        <span>PROJECT 01 // CYBERSECURITY</span>
+      </div>
+
+      <!-- Title & Subtitle -->
+      <h2 id="modal-title" class="text-2xl sm:text-4xl font-black text-white tracking-tight mb-2"></h2>
+      <p id="modal-subtitle" class="text-gray-400 text-sm font-mono mb-6"></p>
+
+      <!-- Overview -->
+      <div class="mb-6 p-4 rounded-2xl bg-white/[0.03] border border-white/5">
+        <h4 class="font-mono text-xs text-cyber-cyan uppercase font-bold mb-2">Architectural Overview</h4>
+        <p id="modal-overview" class="text-gray-300 text-sm leading-relaxed"></p>
+      </div>
+
+      <!-- Problem & Solution Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <div class="p-4 rounded-2xl bg-red-950/20 border border-red-500/20">
+          <h4 class="font-mono text-xs text-red-400 uppercase font-bold mb-1.5">Challenge / Problem</h4>
+          <p id="modal-problem" class="text-gray-300 text-xs leading-relaxed"></p>
+        </div>
+        <div class="p-4 rounded-2xl bg-emerald-950/20 border border-emerald-500/20">
+          <h4 class="font-mono text-xs text-emerald-400 uppercase font-bold mb-1.5">AI Engineered Solution</h4>
+          <p id="modal-solution" class="text-gray-300 text-xs leading-relaxed"></p>
+        </div>
+      </div>
+
+      <!-- Architecture Pipeline Steps -->
+      <div class="mb-6">
+        <h4 class="font-mono text-xs text-gray-400 uppercase font-bold mb-3">System Pipeline Steps</h4>
+        <div id="modal-steps" class="space-y-2"></div>
+      </div>
+
+      <!-- Metrics Badges -->
+      <div class="mb-6">
+        <h4 class="font-mono text-xs text-gray-400 uppercase font-bold mb-3">Verified Performance Metrics</h4>
+        <div id="modal-metrics" class="grid grid-cols-2 sm:grid-cols-4 gap-3"></div>
+      </div>
+
+      <!-- Technologies Tags -->
+      <div class="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+        <div id="modal-tags" class="flex flex-wrap gap-1.5"></div>
+        <div class="flex items-center gap-3">
+          <a id="modal-github-link" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-white/10 font-mono text-xs text-white hover:bg-cyber-cyan hover:text-black transition-all">VIEW CODE ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT: ALL TS DATA & COMPONENT INTERACTIONS -->
+  <script>
+    // ── 01: Projects Data (ported faithfully from data/projectsData.ts) ──
+    const projectsData = [
+      {
+        id: "phishing-detection",
+        number: "01",
+        title: "Phishing Website Identification Using Machine Learning",
+        subtitle: "URL feature analysis & ML-based detection with high precision",
+        category: "AI + Cybersecurity",
+        categoryType: "security",
+        description: "Classified phishing websites using URL feature analysis and ML-based detection achieving high precision in identifying malicious pages.",
+        overview: "Extracts lexical, domain, and entropy indicators from suspicious URLs to detect malicious websites before users enter sensitive credentials.",
+        problem: "Static blocklists and signature-based security filters fail to protect against newly registered, obfuscated, and zero-day phishing links.",
+        solution: "Trained machine learning classification models on verified threat feeds by extracting multi-dimensional URL characteristics for rapid classification.",
+        architectureSteps: [
+          "URL Ingestion & Lexical String Parsing",
+          "URL Feature Extraction (Token counts, suspicious keywords, domain attributes)",
+          "Feature Normalization & Preprocessing Pipeline",
+          "Machine Learning Classifier Engine",
+          "High-Precision Malicious vs. Benign Verdict Output"
+        ],
+        technologies: ["Python", "Machine Learning", "URL Feature Extraction", "Cybersecurity", "Data Analysis"],
+        metrics: [
+          { label: "Precision", value: "High Precision" },
+          { label: "Feature Extraction", value: "Lexical & Domain" },
+          { label: "Target", value: "Malicious URLs" },
+          { label: "Year", value: "2025" }
+        ],
+        accentColor: "#00f2fe",
+        githubUrl: "https://github.com/nareshkuar"
+      },
+      {
+        id: "consistency-tracker",
+        number: "02",
+        title: "Consistency Tracker",
+        subtitle: "Productivity & habit-tracking web application with activity streaks",
+        category: "Productivity + Web",
+        categoryType: "productivity",
+        description: "Developed a productivity and habit-tracking web application to help users maintain daily consistency and monitor activity streaks. Implemented task scheduling, progress tracking, streak management, and reminder features.",
+        overview: "Designed to encourage regular habits and improve productivity, this web application provides task scheduling, progress tracking, streak management, and automated reminders.",
+        problem: "Individuals frequently struggle with maintaining daily consistency and tracking multi-day habits due to lack of structured tracking and visual accountability.",
+        solution: "Engineered a full-stack Flask and Python web application coupled with a relational database to store user habits, calculate persistent streaks, schedule reminders, and visualize progressive completion.",
+        architectureSteps: [
+          "Flask Web Server Routing & Session Management",
+          "Relational Database Schema for User Habits & Daily Logs",
+          "Streak Calculation & Activity Matrix Engine",
+          "Task Scheduling & Reminder Service",
+          "Responsive HTML/CSS/JavaScript Dashboard UI"
+        ],
+        technologies: ["Python", "Flask", "HTML", "CSS", "JavaScript", "Database"],
+        metrics: [
+          { label: "Architecture", value: "Python + Flask" },
+          { label: "Core Feature", value: "Streak Tracking" },
+          { label: "Storage", value: "Relational DB" },
+          { label: "Year", value: "2026" }
+        ],
+        accentColor: "#d1ff56",
+        githubUrl: "https://github.com/nareshkuar"
+      },
+      {
+        id: "department-rag-chatbot",
+        number: "03",
+        title: "Department Knowledge Assistant – RAG-Based Chatbot",
+        subtitle: "Retrieval-Augmented Generation chatbot for syllabus, faculty & academic queries",
+        category: "Generative AI + RAG",
+        categoryType: "genai",
+        description: "Built a Retrieval-Augmented Generation (RAG) chatbot to answer student queries on department syllabus, faculty, and academic resources. Designed the document embedding and retrieval pipeline independently, integrating an LLM with a vector database for accurate, context-aware responses.",
+        overview: "Provides students and faculty with an immediate conversational assistant grounded directly in verified department documents, circulars, and course syllabi.",
+        problem: "Generic LLMs lack institutional knowledge and hallucinate faculty or syllabus facts, while manual document searches are tedious for students.",
+        solution: "Designed and implemented an independent document embedding and retrieval pipeline. Department documents are chunked and vectorized into a vector database, allowing the LLM to synthesize accurate, context-aware answers.",
+        architectureSteps: [
+          "Department Academic Document Ingestion (Syllabus, Faculty Guides, Resources)",
+          "Document Preprocessing & Semantic Chunking",
+          "Vector Embedding Generation Pipeline",
+          "Vector Database Indexing & Similarity Retrieval",
+          "Context-Augmented LLM Prompting & Response Generation"
+        ],
+        technologies: ["Python", "RAG", "LLM", "Vector Database", "NLP"],
+        metrics: [
+          { label: "Project Style", value: "Solo Academic" },
+          { label: "Pipeline", value: "End-to-End RAG" },
+          { label: "Vector Store", value: "Vector DB" },
+          { label: "Year", value: "2026" }
+        ],
+        accentColor: "#a855f7",
+        githubUrl: "https://github.com/nareshkuar"
+      },
+      {
+        id: "voice-food-ordering",
+        number: "04",
+        title: "AI-Based Voice-Controlled Food Ordering System",
+        subtitle: "Bilingual (Tamil & English) voice AI agent powered by Gemini API",
+        category: "Voice AI + Gemini API",
+        categoryType: "voiceai",
+        description: "Developed a bilingual (Tamil & English) voice AI agent using Gemini for intent recognition and food item extraction from spoken commands. Designed conversational ordering flow with menu suggestions, confirmation, and accessibility-focused smart processing.",
+        overview: "Built during an inter-college hackathon under strict time pressure, demonstrating rapid prototyping, multimodal speech processing, and LLM integration for an intuitive, accessible voice-ordering experience.",
+        problem: "Traditional app ordering interfaces create barriers for non-tech-savvy users or regional language speakers who prefer speaking naturally in their native tongue.",
+        solution: "Integrated Speech-to-Text with the Google Gemini API to extract food items, quantities, and user preferences from natural spoken sentences in both Tamil and English, returning audio TTS and visual confirmations.",
+        architectureSteps: [
+          "Microphone Audio Stream Capture & Speech-to-Text Transcription",
+          "Bilingual Intent Recognition via Google Gemini API",
+          "Menu Entity Extraction (Items, Quantities, Customizations)",
+          "Conversational Flow Manager (Confirmation, Suggestions, Cart)",
+          "Text-to-Speech (TTS) Voice Synthesis & Visual Display Feedback"
+        ],
+        technologies: ["Google Gemini API", "Python", "Speech-to-Text", "TTS", "NLP"],
+        metrics: [
+          { label: "Languages", value: "Tamil & English" },
+          { label: "Core Model", value: "Google Gemini API" },
+          { label: "Event", value: "Inter-College Hackathon" },
+          { label: "Year", value: "2025" }
+        ],
+        accentColor: "#f59e0b",
+        githubUrl: "https://github.com/nareshkuar"
+      },
+      {
+        id: "crime-details-store",
+        number: "05",
+        title: "Crime Details Store – DBMS Project",
+        subtitle: "Normalized relational database system for crime case records & reporting",
+        category: "DBMS + Database Design",
+        categoryType: "dbms",
+        description: "Designed a normalized relational database with SQL-based queries to store, retrieve, and report crime case details including suspects, victims, and case status.",
+        overview: "A comprehensive database engineering project focused on structuring, securing, and querying criminal investigation records with relational integrity, indexing, and multi-parameter reporting.",
+        problem: "Unstructured crime records lead to data redundancy, inconsistent suspect profiles, and slow cross-referencing during investigations.",
+        solution: "Architected a normalized relational database schema (3NF) with optimized SQL queries and Python connectivity to manage case records, suspect registries, victim records, and case status updates.",
+        architectureSteps: [
+          "Entity-Relationship (ER) Modeling & Attribute Mapping",
+          "Schema Normalization (1NF, 2NF, 3NF) for Zero Redundancy",
+          "SQL Table Creation with Foreign Key & Integrity Constraints",
+          "Python Database Connectivity Layer",
+          "Multi-Condition Query Engine for Suspect, Victim & Case Reporting"
+        ],
+        technologies: ["SQL", "DBMS", "Database Design", "Python"],
+        metrics: [
+          { label: "Design", value: "Normalized (3NF)" },
+          { label: "Querying", value: "SQL-Based" },
+          { label: "Domain", value: "Crime Details Store" },
+          { label: "Year", value: "2026" }
+        ],
+        accentColor: "#38bdf8",
+        githubUrl: "https://github.com/nareshkuar"
+      }
+    ];
+
+    // ── 02: Render Projects into DOM ──
+    const projectsContainer = document.getElementById('projects-container');
+    projectsData.forEach((project, idx) => {
+      const pills = project.technologies.slice(0, 4).map(tech =>
+        `<span class="px-2.5 py-1 rounded-md bg-white/5 font-mono text-[11px] text-gray-300 border border-white/5">${tech}</span>`
+      ).join('');
+
+      const card = document.createElement('article');
+      card.className = "glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 hover:border-white/20 transition-all group flex flex-col lg:flex-row gap-8 items-start justify-between cursor-pointer";
+      card.setAttribute('data-index', idx);
+      card.innerHTML = `
+        <div class="flex-1">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="font-mono text-sm font-black" style="color: ${project.accentColor}">PROJECT // ${project.number}</span>
+            <span class="text-gray-500">•</span>
+            <span class="font-mono text-xs uppercase tracking-widest text-gray-400">${project.category}</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-black text-white tracking-tight mb-3 group-hover:text-cyber-cyan transition-colors">
+            ${project.title}
+          </h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-5 max-w-3xl">
+            ${project.description}
+          </p>
+          <div class="flex flex-wrap items-center gap-2">
+            ${pills}
+          </div>
+        </div>
+
+        <div class="w-full lg:w-auto flex lg:flex-col items-center lg:items-end justify-between gap-4 shrink-0 pt-4 lg:pt-0 border-t lg:border-t-0 border-white/5">
+          <div class="font-mono text-right hidden sm:block">
+            <div class="text-xl font-bold text-white">${project.metrics[0].value}</div>
+            <div class="text-[10px] text-gray-400 uppercase tracking-widest">${project.metrics[0].label}</div>
+          </div>
+          <button class="case-study-btn inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl font-mono text-xs font-bold transition-all" style="background: ${project.accentColor}18; color: ${project.accentColor}; border: 1px solid ${project.accentColor}44" data-index="${idx}">
+            <span>VIEW CASE STUDY</span>
+            <span>↗</span>
+          </button>
+        </div>
+      `;
+
+      card.addEventListener('click', () => openProjectModal(idx));
+      projectsContainer.appendChild(card);
+    });
+
+    // ── 03: Project Modal Logic ──
+    const modal = document.getElementById('project-modal');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+
+    function openProjectModal(idx) {
+      const p = projectsData[idx];
+      document.getElementById('modal-eyebrow').innerHTML = `PROJECT ${p.number} // <span style="color:${p.accentColor}">${p.category}</span>`;
+      document.getElementById('modal-title').textContent = p.title;
+      document.getElementById('modal-subtitle').textContent = p.subtitle;
+      document.getElementById('modal-overview').textContent = p.overview;
+      document.getElementById('modal-problem').textContent = p.problem;
+      document.getElementById('modal-solution').textContent = p.solution;
+
+      // Steps
+      const stepsContainer = document.getElementById('modal-steps');
+      stepsContainer.innerHTML = p.architectureSteps.map((s, i) => `
+        <div class="flex items-start gap-3 p-2 rounded-lg bg-white/[0.02]">
+          <span class="font-mono text-xs font-bold text-cyber-acid">0${i+1}</span>
+          <span class="text-xs text-gray-300">${s}</span>
+        </div>
+      `).join('');
+
+      // Metrics
+      const metricsContainer = document.getElementById('modal-metrics');
+      metricsContainer.innerHTML = p.metrics.map(m => `
+        <div class="p-3 rounded-xl bg-white/[0.03] border border-white/5 text-center">
+          <div class="text-lg font-black text-white font-mono">${m.value}</div>
+          <div class="text-[10px] text-gray-400 font-mono uppercase mt-0.5">${m.label}</div>
+        </div>
+      `).join('');
+
+      // Tags
+      const tagsContainer = document.getElementById('modal-tags');
+      tagsContainer.innerHTML = p.technologies.map(t =>
+        `<span class="px-2.5 py-1 rounded-md bg-white/5 font-mono text-xs text-gray-300 border border-white/5">${t}</span>`
+      ).join('');
+
+      document.getElementById('modal-github-link').href = p.githubUrl || 'https://github.com/nareshkuar';
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProjectModal() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    modalCloseBtn.addEventListener('click', closeProjectModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeProjectModal(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeProjectModal(); });
+
+    // ── 04: AI Terminal Shell Simulation (from components/ui/Terminal.tsx) ──
+    const terminalOutputs = {
+      "initialize_ai()": [
+        "⚡ Initializing Nareshkumar Neural Framework v2.6...",
+        "✓ Core models loaded: LLM Orchestrator, Computer Vision, RAG Pipelines",
+        "✓ Memory vector stores synchronized with 98.4% cosine alignment",
+        "✓ Status: All intelligent nodes operational. Ready to architect systems."
+      ],
+      "load_projects()": [
+        "📦 Loading curated project repositories...",
+        "01. [CYBERSECURITY + AI]   Phishing Detection Platform (ML Classifier + 96.4% Acc)",
+        "02. [PRODUCTIVITY + WEB]   Consistency Tracker (Streak Analytics & 60FPS UI)",
+        "03. [AI + COMPUTER VISION] Breast Cancer Prediction (CLAHE + Deep CNN Pipeline)",
+        "04. [GENAI + RAG]          Department RAG Chatbot (Semantic Chunks + Vector DB)",
+        "✓ All 4 flagship architectures verified & available for case study inspection."
+      ],
+      "analyze_skills()": [
+        "📊 Computing capability matrix and proficiency vectors...",
+        "• AI / ML: Python, PyTorch, Scikit-Learn, Deep Learning, Computer Vision, NLP",
+        "• GenAI: RAG Systems, Vector DBs (ChromaDB/FAISS), Embeddings, LLM Agents",
+        "• Web Engineering: Next.js, React, TypeScript, Tailwind CSS, Node.js, REST APIs",
+        "• Security & Tools: Phishing Intelligence, Threat Analysis, Docker, Supabase, Git"
+      ],
+      "leadership_mode.activate()": [
+        "👑 Activating Leadership & Command Module...",
+        "• Department Secretary: Directing student initiatives, liaison & tech symposiums",
+        "• Project Team Leader: 4+ major multi-disciplinary AI/Web systems led to delivery",
+        "• Hackathon Team Leader: 5+ competitive product sprints executed under pressure",
+        "• Philosophy: 'Clear architecture, empowered teams, relentless execution.'"
+      ],
+      "build_future()": [
+        "🚀 Compiling vision directives for 2026 and beyond...",
+        "Building practical, ethical, and high-impact AI agents that bridge complex machine intelligence with seamless human-centered digital experiences."
+      ],
+      "security_scan()": [
+        "🛡️ Executing automated threat heuristics and boundary scan...",
+        "✓ SSL Handshake: Strong (TLS 1.3)",
+        "✓ Subresource Integrity: Enforced",
+        "✓ Prompt Injection Defense: Active Layer 4 Safeguards",
+        "✓ Threat Level: 0.00 (Benign & Fortified)"
+      ],
+      "whoami": [
+        "NARESHKUMAR A",
+        "Role: AI Engineer & Web Designer",
+        "Focus: Artificial Intelligence, Generative AI, RAG Systems, Modern Web, Cybersecurity",
+        "Identity: AI & Data Science student passionate about building intelligent systems."
+      ],
+      "help": [
+        "Available commands:",
+        "  initialize_ai()            - Spin up AI neural core and subsystems",
+        "  load_projects()            - Inspect flagship AI & Web case studies",
+        "  analyze_skills()           - View full stack & intelligence matrix",
+        "  leadership_mode.activate() - Display leadership roles and metrics",
+        "  security_scan()            - Run cybersecurity heuristic diagnostic",
+        "  build_future()             - Print long-term technical mission",
+        "  whoami                     - Print engineer credentials",
+        "  clear                      - Reset terminal log history"
+      ]
+    };
+
+    const terminalBody = document.getElementById('terminal-body');
+    const terminalForm = document.getElementById('terminal-form');
+    const terminalInput = document.getElementById('terminal-input');
+
+    function runTerminalCommand(cmd) {
+      const cleanCmd = cmd.trim();
+      if (!cleanCmd) return;
+
+      if (cleanCmd === "clear") {
+        terminalBody.innerHTML = `
+          <div class="text-cyber-acid">⚡ System online. Welcome to Nareshkumar AI Terminal shell.</div>
+          <div class="text-gray-400">Type a command below or click any of the shortcut buttons above. Try 'help'.</div>
+        `;
+        return;
+      }
+
+      // Append user command
+      const cmdRow = document.createElement('div');
+      cmdRow.className = "text-white font-bold";
+      cmdRow.innerHTML = `<span class="text-cyber-acid">›</span> ${cleanCmd}`;
+      terminalBody.appendChild(cmdRow);
+
+      // Append response
+      const outputLines = terminalOutputs[cleanCmd] || [
+        `Command not recognized: '${cleanCmd}'. Type 'help' to see valid commands.`
+      ];
+
+      outputLines.forEach(line => {
+        const out = document.createElement('div');
+        out.className = line.startsWith("✓") ? "text-emerald-400" : line.startsWith("•") || line.startsWith("0") ? "text-gray-300" : "text-cyber-cyan";
+        out.textContent = line;
+        terminalBody.appendChild(out);
+      });
+
+      terminalBody.scrollTop = terminalBody.scrollHeight;
+    }
+
+    terminalForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      runTerminalCommand(terminalInput.value);
+      terminalInput.value = "";
+    });
+
+    document.querySelectorAll('.terminal-quick-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cmd = btn.getAttribute('data-cmd');
+        runTerminalCommand(cmd);
+      });
+    });
+
+    // ── 05: Resume Download Simulator (from HeroSection.tsx) ──
+    const resumeBtn = document.getElementById('download-resume-btn');
+    const resumeBtnText = document.getElementById('resume-btn-text');
+
+    resumeBtn.addEventListener('click', () => {
+      resumeBtnText.textContent = "GENERATING TXT...";
+      setTimeout(() => {
+        const resumeContent = `NARESHKUMAR A
+B.Tech – Artificial Intelligence & Data Science | AI Engineering & AI-Driven Security
++91 9363728989 | nk6404250@gmail.com | Coimbatore, TN | LinkedIn | GitHub
+
+PROFESSIONAL SUMMARY
+AI & Data Science student passionate about modern AI and Innovation. Exploring Generative AI, ML, RAG, AI Agents, and Cybersecurity to build Intelligent solutions for real-world challenges.
+
+EDUCATION
+B.Tech – Artificial Intelligence and Data Science | 2024–2028 (Ongoing)
+Kathir College of Engineering, Coimbatore, Tamil Nadu
+• CGPA: 8.09 — 4 semesters completed
+• Active in hackathons, technical events, and project-based learning
+
+TECHNICAL SKILLS
+Python, Machine Learning, Deep Learning, NLP, LLMs, RAG, MCP, AI Agents, TensorFlow, Git/GitHub, Supabase, Cybersecurity, SQL/DBMS, Flask
+
+PROJECTS
+1. Consistency Tracker (2026)
+   Academic Project | Python, Flask, HTML, CSS, JavaScript, Database
+   • Developed a productivity and habit-tracking web application to help users maintain daily consistency and monitor activity streaks.
+   • Implemented task scheduling, progress tracking, streak management, and reminder features to encourage regular habits and improve productivity.
+
+2. Phishing Website Identification Using Machine Learning (2025)
+   Mini Project | Python, Machine Learning, URL Feature Extraction
+   • Classified phishing websites using URL feature analysis and ML-based detection achieving high precision in identifying malicious pages.
+
+3. Crime Details Store – DBMS Project (2026)
+   Academic Project | SQL, DBMS, Database Design, Python
+   • Designed a normalized relational database with SQL-based queries to store, retrieve, and report crime case details including suspects, victims, and case status.
+
+4. Department Knowledge Assistant – RAG-Based Chatbot (2026)
+   Solo Academic Project | Python, RAG, LLM, Vector Database, NLP
+   • Built a Retrieval-Augmented Generation (RAG) chatbot to answer student queries on department syllabus, faculty, and academic resources.
+   • Designed the document embedding and retrieval pipeline independently, integrating an LLM with a vector database for accurate, context-aware responses.
+
+INTERNSHIP
+Python & Cyber Security Intern (20 May 2026 – 20 June 2026)
+One-Month Internship | Python, Cyber Security
+• Completed a one-month internship focused on Python programming and cyber security fundamentals, including threat analysis and secure coding practices.
+
+CERTIFICATIONS
+• Cyber Security Fundamentals – Course 1 (Completed)
+• Cyber Security Fundamentals – Course 2 (Completed)
+• AI Agent(IBM) — Batch 1
+• AI Fundamental(IBM) – Batch 2
+• Network security analysis – Course 1 (Completed)
+
+HACKATHONS & COMPETITIONS
+AI-Based Voice-Controlled Food Ordering System (2025)
+Hackathon Project | Google Gemini API, Python, Speech-to-Text, TTS, NLP
+• Developed a bilingual (Tamil & English) voice AI agent using Gemini for intent recognition and food item extraction from spoken commands.
+• Designed conversational ordering flow with menu suggestions, confirmation, and accessibility-focused smart processing.
+• Participated in multiple inter-college hackathons, building working prototypes under time pressure and presenting to technical panels.
+• Demonstrated skills in rapid prototyping, collaborative development, and AI integration in competitive environments.
+
+AREAS OF INTEREST
+AI Engineering • AI-Driven Security • Machine Learning • Ethical Hacking • AI Application Development • AI Automation
+`;
+        const blob = new Blob([resumeContent], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "Nareshkumar_A_Resume.txt";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        resumeBtnText.textContent = "DOWNLOADED ✓";
+        setTimeout(() => { resumeBtnText.textContent = "DOWNLOAD RESUME"; }, 3000);
+      }, 500);
+    });
+
+    // ── 06: Contact Form & Copy Email ──
+    const copyEmailBtn = document.getElementById('copy-email-btn');
+    const copyBtnText = document.getElementById('copy-btn-text');
+    copyEmailBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText("nk6404250@gmail.com");
+      copyBtnText.textContent = "COPIED ✓";
+      setTimeout(() => { copyBtnText.textContent = "COPY"; }, 2000);
+    });
+
+    const contactForm = document.getElementById('contact-form');
+    const formFeedback = document.getElementById('form-feedback');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const submitBtn = document.getElementById('contact-submit-btn');
+      submitBtn.textContent = "TRANSMITTING...";
+      submitBtn.disabled = true;
+
+      setTimeout(() => {
+        submitBtn.textContent = "TRANSMITTED SUCCESSFULLY ✓";
+        submitBtn.disabled = false;
+        formFeedback.classList.remove('hidden');
+        formFeedback.className = "font-mono text-xs text-center py-2 text-cyber-acid";
+        formFeedback.textContent = "✓ Transmission received. Nareshkumar will respond shortly.";
+        contactForm.reset();
+        setTimeout(() => {
+          submitBtn.textContent = "TRANSMIT MESSAGE ↗";
+          formFeedback.classList.add('hidden');
+        }, 5000);
+      }, 800);
+    });
+
+    // ── 07: 3D Mouse Tilt Effect for Hero Portrait ──
+    const portraitCard = document.getElementById('hero-portrait-card');
+    if (portraitCard) {
+      portraitCard.addEventListener('pointermove', (e) => {
+        const rect = portraitCard.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        const tiltX = y * -16;
+        const tiltY = x * 16;
+        portraitCard.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.02)`;
+      });
+      portraitCard.addEventListener('pointerleave', () => {
+        portraitCard.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+      });
+    }
+
+    // ── 08: Interactive Custom Cursor ──
+    const cursorDot = document.getElementById('custom-cursor-dot');
+    const cursorRing = document.getElementById('custom-cursor-ring');
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ringX = mouseX;
+    let ringY = mouseY;
+
+    window.addEventListener('pointermove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorDot.style.left = mouseX + 'px';
+      cursorDot.style.top = mouseY + 'px';
+    });
+
+    function updateCursorRing() {
+      ringX += (mouseX - ringX) * 0.15;
+      ringY += (mouseY - ringY) * 0.15;
+      cursorRing.style.left = ringX + 'px';
+      cursorRing.style.top = ringY + 'px';
+      requestAnimationFrame(updateCursorRing);
+    }
+    requestAnimationFrame(updateCursorRing);
+
+    // Click Ripple Generator
+    window.addEventListener('click', (e) => {
+      const ripple = document.createElement('div');
+      ripple.className = 'click-ripple-circle';
+      ripple.style.left = e.clientX + 'px';
+      ripple.style.top = e.clientY + 'px';
+      document.body.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+    });
+
+    // ── 09: Mobile Navigation Drawer ──
+    const mobileToggle = document.getElementById('mobile-menu-toggle');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = !mobileDrawer.classList.contains('hidden');
+      if (isOpen) {
+        mobileDrawer.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      } else {
+        mobileDrawer.classList.remove('hidden');
+        hamburgerIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
+      }
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileDrawer.classList.add('hidden');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      });
+    });
+
+    // ── 10: Active Section Highlighting on Scroll ──
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      let current = "";
+      sections.forEach(section => {
+        const top = section.offsetTop - 150;
+        if (window.scrollY >= top) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        const target = link.getAttribute('data-nav');
+        if (target === current) {
+          link.classList.add('text-cyber-acid', 'bg-white/10');
+          link.classList.remove('text-gray-300');
+        } else {
+          link.classList.remove('text-cyber-acid', 'bg-white/10');
+          link.classList.add('text-gray-300');
+        }
+      });
+    });
+
+    // ── 11: Infinite 3D Coverflow Corner Subwidget ──
+    const coverflowData = [
+      { id: 'portrait', title: 'Nareshkumar A', subtitle: 'AI & Data Science Student Leader', image: 'public/nareshkumar-portrait.png', category: 'IDENTITY', color: '#d1ff56', desc: 'B.Tech Artificial Intelligence & Data Science at Kathir College of Engineering. CGPA: 8.09.' },
+      { id: 'anthropic-ai', title: 'AI Fluency: Framework & Foundations', subtitle: 'Anthropic', image: 'public/certificates/previews/anthropic_ai_fluency.png', category: 'AI & CLOUD', color: '#d1ff56', desc: 'Official credential by Anthropic covering foundational AI frameworks, LLM architectures, and human-AI collaboration.' },
+      { id: 'hack-photo', title: 'Science Day Technical Awards', subtitle: 'KPR Institute of Engineering', image: 'public/certificates/previews/hackathon_award_photo.jpg', category: 'AWARD PHOTO', color: '#eab308', desc: 'Technical exhibition & STEM prototyping presentation award at KPRIET.' },
+      { id: 'ai-cert', title: 'AI Fundamentals: Language & Vision', subtitle: 'Cisco & IBM SkillsBuild', image: 'public/certificates/previews/ai_certificate.png', category: 'AI & CLOUD', color: '#00f2fe', desc: 'Credential covering LLM architectures, Generative AI queries, and computer vision models.' },
+      { id: 'aws-cert', title: 'AWS Cloud Virtual Internship', subtitle: 'NASSCOM & SmartBridge', image: 'public/certificates/previews/ibm_ai_fundamentals.png', category: 'CLOUD', color: '#d1ff56', desc: 'Hands-on cloud computing internship applying core AWS infrastructure and security models.' },
+      { id: 'inlighnx', title: 'Offensive Cyber Security', subtitle: 'InLighnX Global Pvt. Ltd.', image: 'public/certificates/previews/internship_certificate.png', category: 'INTERNSHIP', color: '#a855f7', desc: 'Python automation for subdomain enumeration, PDF security analysis, and port scanning.' },
+      { id: 'hackzen', title: 'HACKZEN’26 National Fest', subtitle: 'PPG Institute of Technology', image: 'public/certificates/previews/hackathon_certificate.png', category: 'HACKATHON', color: '#ec4899', desc: 'Certificate of Appreciation for competing in national collegiate hackathon building rapid AI MVPs.' },
+      { id: 'nasscom', title: 'Network Security Engineer', subtitle: 'NASSCOM / Skill India', image: 'public/certificates/previews/networking_certificate.png', category: 'CYBER SECURITY', color: '#38bdf8', desc: 'National skilling certification in Network Security Engineering and infrastructure defense.' },
+      { id: 'gl-intro', title: 'Intro to Cyber Security', subtitle: 'Great Learning', image: 'public/certificates/previews/cyber_security_course_1.png', category: 'SECURITY', color: '#10b981', desc: 'Foundations of info security, cryptographic basics, and threat mitigation.' },
+      { id: 'gfg', title: 'Cyber Security – Skill Up', subtitle: 'GeeksforGeeks', image: 'public/certificates/previews/cyber_security_course_2.png', category: 'SECURITY', color: '#22c55e', desc: 'Coursework covering vulnerability identification and secure coding practices.' },
+      { id: 'agents', title: 'Future AI Agents Offer', subtitle: 'EWB Edutech (AICTE Approved)', image: 'public/certificates/previews/internship_offer_letter.png', category: 'AI AGENTS', color: '#8b5cf6', desc: 'Selection offer targeting autonomous LLM agents and multi-agent coordination.' },
+      { id: 'litz', title: 'Cyber Security Internship', subtitle: 'Litz Tech', image: 'public/certificates/previews/naresh_kumar_course.png', category: 'INTERNSHIP', color: '#f59e0b', desc: 'Foundational cyber defense principles and digital asset protection.' }
+    ];
+
+    let cfActiveIndex = 0;
+    let cfIsPlaying = true;
+    let cfTimer = null;
+    let cfIsHovered = false;
+
+    const cfStage = document.getElementById('cf-stage');
+    const cfCounter = document.getElementById('cf-counter');
+    const cfActiveTitle = document.getElementById('cf-active-title');
+    const cfProgressBar = document.getElementById('cf-progress-bar');
+    const cfPlayBtn = document.getElementById('cf-play-btn');
+    const cfDrawer = document.getElementById('cf-drawer');
+    const cfDrawerList = document.getElementById('cf-drawer-list');
+    const cfWidget = document.getElementById('cf-widget');
+    const cfPill = document.getElementById('cf-pill');
+
+    function renderCoverflow() {
+      if (!cfStage) return;
+      cfStage.innerHTML = '';
+      const total = coverflowData.length;
+      const cardWidth = 260;
+      const cardHeight = 165;
+      const spacing = 110;
+      const rotateDeg = 40;
+      const depthZ = 115;
+
+      coverflowData.forEach((item, idx) => {
+        let diff = (idx - cfActiveIndex) % total;
+        if (diff > total / 2) diff -= total;
+        if (diff < -total / 2) diff += total;
+
+        const isVisible = Math.abs(diff) <= 3;
+        const isActive = diff === 0;
+
+        const xOffset = diff * spacing;
+        const zOffset = -Math.abs(diff) * depthZ;
+        const rotY = diff === 0 ? 0 : (diff > 0 ? -rotateDeg : rotateDeg);
+        const scale = Math.max(0.68, 1 - Math.abs(diff) * 0.12);
+        const opacity = isVisible ? Math.max(0.2, 1 - Math.abs(diff) * 0.28) : 0;
+        const zIndex = 30 - Math.abs(diff);
+
+        const card = document.createElement('div');
+        card.className = 'absolute cursor-pointer transition-all';
+        card.style.width = cardWidth + 'px';
+        card.style.height = cardHeight + 'px';
+        card.style.left = '50%';
+        card.style.top = '10px';
+        card.style.marginLeft = -(cardWidth / 2) + 'px';
+        card.style.zIndex = zIndex;
+        card.style.opacity = opacity;
+        card.style.pointerEvents = isVisible ? 'auto' : 'none';
+        card.style.transition = 'transform 0.45s cubic-bezier(0.34, 1.4, 0.64, 1), opacity 0.35s ease, filter 0.35s ease';
+        card.style.transform = `translateX(${xOffset}px) translateZ(${zOffset}px) rotateY(${rotY}deg) scale(${scale})`;
+        card.style.filter = isActive ? 'brightness(105%) contrast(105%)' : `brightness(${Math.max(0.35, 1 - Math.abs(diff) * 0.25)})`;
+
+        card.innerHTML = `
+          <div class="relative w-full h-full rounded-2xl overflow-hidden border ${isActive ? 'border-cyber-acid shadow-[0_0_30px_rgba(209,255,86,0.35)] ring-1 ring-cyber-acid/50' : 'border-white/10 hover:border-cyber-cyan/50 shadow-lg'} bg-[#0a0f16]">
+            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover object-center" onerror="this.src='public/nareshkumar-portrait.png'">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent pointer-events-none"></div>
+            <div class="absolute top-2 left-2 right-2 flex items-center justify-between pointer-events-none">
+              <span class="font-mono text-[9px] font-bold px-2 py-0.5 rounded-md backdrop-blur-md uppercase tracking-wider" style="background: rgba(0,0,0,0.75); color: ${item.color}; border: 1px solid ${item.color}40;">
+                ${item.category}
+              </span>
+              ${isActive ? '<span class="font-mono text-[9px] font-bold px-1.5 py-0.5 rounded bg-cyber-acid text-black">ACTIVE</span>' : ''}
+            </div>
+            <div class="absolute bottom-2 left-2.5 right-2.5 pointer-events-none">
+              <h4 class="text-white font-bold text-xs truncate drop-shadow">${item.title}</h4>
+              <p class="text-[10px] font-mono text-gray-300 truncate">${item.subtitle}</p>
+            </div>
+          </div>
+          <div class="absolute left-0 right-0 pointer-events-none overflow-hidden rounded-2xl opacity-25" style="top:${cardHeight + 4}px; height:35px; transform: scaleY(-1); mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%); -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);">
+            <img src="${item.image}" alt="" class="w-full h-full object-cover" onerror="this.src='public/nareshkumar-portrait.png'">
+          </div>
+        `;
+
+        card.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (isActive) {
+            openCfModal(idx);
+          } else {
+            cfActiveIndex = idx;
+            renderCoverflow();
+            restartProgressBar();
+          }
+        });
+
+        cfStage.appendChild(card);
+      });
+
+      if (cfCounter) {
+        cfCounter.textContent = `${String(cfActiveIndex + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`;
+      }
+      if (cfActiveTitle) {
+        cfActiveTitle.textContent = coverflowData[cfActiveIndex].title;
+      }
+      renderDrawerList();
+    }
+
+    function renderDrawerList() {
+      if (!cfDrawerList) return;
+      cfDrawerList.innerHTML = '';
+      coverflowData.forEach((item, idx) => {
+        const btn = document.createElement('button');
+        btn.className = `w-full text-left flex items-center gap-2.5 p-2 rounded-xl border transition-all ${idx === cfActiveIndex ? 'bg-cyber-acid/10 border-cyber-acid/60 text-white' : 'bg-white/[0.02] border-white/5 text-gray-400 hover:text-white hover:bg-white/5'}`;
+        btn.innerHTML = `
+          <img src="${item.image}" alt="" class="w-8 h-8 rounded-lg object-cover shrink-0 border border-white/10" onerror="this.src='public/nareshkumar-portrait.png'">
+          <div class="flex-1 min-w-0">
+            <p class="text-xs font-bold truncate leading-tight">${item.title}</p>
+            <p class="font-mono text-[9px] text-cyber-cyan truncate">${item.subtitle}</p>
+          </div>
+          ${idx === cfActiveIndex ? '<span class="w-1.5 h-1.5 rounded-full bg-cyber-acid shrink-0"></span>' : ''}
+        `;
+        btn.addEventListener('click', () => {
+          cfActiveIndex = idx;
+          renderCoverflow();
+          restartProgressBar();
+          cfDrawer.classList.add('hidden');
+        });
+        cfDrawerList.appendChild(btn);
+      });
+    }
+
+    function nextCoverflow() {
+      cfActiveIndex = (cfActiveIndex + 1) % coverflowData.length;
+      renderCoverflow();
+      restartProgressBar();
+    }
+
+    function prevCoverflow() {
+      cfActiveIndex = (cfActiveIndex - 1 + coverflowData.length) % coverflowData.length;
+      renderCoverflow();
+      restartProgressBar();
+    }
+
+    function restartProgressBar() {
+      if (!cfProgressBar) return;
+      cfProgressBar.style.transition = 'none';
+      cfProgressBar.style.width = '0%';
+      void cfProgressBar.offsetWidth;
+      if (cfIsPlaying && !cfIsHovered) {
+        cfProgressBar.style.transition = 'width 3.5s linear';
+        cfProgressBar.style.width = '100%';
+      }
+    }
+
+    function startAutoPlay() {
+      if (cfTimer) clearInterval(cfTimer);
+      cfTimer = setInterval(() => {
+        if (cfIsPlaying && !cfIsHovered) {
+          nextCoverflow();
+        }
+      }, 3500);
+      restartProgressBar();
+    }
+
+    // Controls setup
+    document.getElementById('cf-next-btn')?.addEventListener('click', nextCoverflow);
+    document.getElementById('cf-prev-btn')?.addEventListener('click', prevCoverflow);
+    document.getElementById('cf-play-btn')?.addEventListener('click', () => {
+      cfIsPlaying = !cfIsPlaying;
+      if (cfPlayBtn) {
+        cfPlayBtn.innerHTML = cfIsPlaying 
+          ? '<svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg><span class="text-[10px]">AUTOPLAY</span>'
+          : '<svg class="w-3 h-3 fill-current" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg><span class="text-[10px]">PLAY</span>';
+        cfPlayBtn.className = cfIsPlaying 
+          ? 'p-1.5 rounded-lg border text-xs font-mono flex items-center gap-1.5 transition-colors bg-cyber-acid/10 border-cyber-acid/40 text-cyber-acid'
+          : 'p-1.5 rounded-lg border text-xs font-mono flex items-center gap-1.5 transition-colors bg-white/5 border-white/10 text-gray-400 hover:text-white';
+      }
+      restartProgressBar();
+    });
+
+    // Drawer toggle
+    document.getElementById('cf-drawer-toggle')?.addEventListener('click', () => {
+      cfDrawer?.classList.toggle('hidden');
+    });
+    document.getElementById('cf-drawer-close')?.addEventListener('click', () => {
+      cfDrawer?.classList.add('hidden');
+    });
+
+    // Minimize & Restore
+    document.getElementById('cf-min-btn')?.addEventListener('click', () => {
+      cfWidget?.classList.add('hidden');
+      cfPill?.classList.remove('hidden');
+    });
+    cfPill?.addEventListener('click', () => {
+      cfWidget?.classList.remove('hidden');
+      cfPill?.classList.add('hidden');
+      renderCoverflow();
+      restartProgressBar();
+    });
+
+    // Pause on hover
+    cfWidget?.addEventListener('mouseenter', () => {
+      cfIsHovered = true;
+      if (cfProgressBar) cfProgressBar.style.width = '0%';
+    });
+    cfWidget?.addEventListener('mouseleave', () => {
+      cfIsHovered = false;
+      restartProgressBar();
+    });
+
+    // Modal Expand
+    function openCfModal(idx) {
+      const modal = document.getElementById('cf-modal');
+      const modalImg = document.getElementById('cf-modal-img');
+      const modalTitle = document.getElementById('cf-modal-title');
+      const modalSubtitle = document.getElementById('cf-modal-subtitle');
+      const modalDesc = document.getElementById('cf-modal-desc');
+      const modalCategory = document.getElementById('cf-modal-cat');
+      const item = coverflowData[idx];
+      if (!modal || !item) return;
+
+      if (modalImg) modalImg.src = item.image;
+      if (modalTitle) modalTitle.textContent = item.title;
+      if (modalSubtitle) modalSubtitle.textContent = item.subtitle;
+      if (modalDesc) modalDesc.textContent = item.desc;
+      if (modalCategory) {
+        modalCategory.textContent = item.category;
+        modalCategory.style.color = item.color;
+        modalCategory.style.borderColor = item.color + '40';
+      }
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    document.getElementById('cf-modal-close')?.addEventListener('click', () => {
+      document.getElementById('cf-modal')?.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    });
+    document.getElementById('cf-expand-btn')?.addEventListener('click', () => {
+      openCfModal(cfActiveIndex);
+    });
+    document.getElementById('cf-open-active-btn')?.addEventListener('click', () => {
+      openCfModal(cfActiveIndex);
+    });
+
+    // Initialize
+    renderCoverflow();
+    startAutoPlay();
+  </script>
+
+  <!-- Fullscreen Coverflow Detail Modal -->
+  <div id="cf-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-2xl">
+    <div class="relative w-full max-w-3xl rounded-2xl bg-[#080d14] border border-cyber-cyan/40 p-6 shadow-2xl flex flex-col items-center">
+      <button id="cf-modal-close" class="absolute top-4 right-4 p-2 rounded-lg bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <span id="cf-modal-cat" class="font-mono text-xs font-bold px-3 py-1 rounded-full border mb-3">CATEGORY</span>
+      <h3 id="cf-modal-title" class="text-xl sm:text-2xl font-black text-white text-center">TITLE</h3>
+      <p id="cf-modal-subtitle" class="font-mono text-xs text-cyber-cyan text-center mt-1">SUBTITLE</p>
+      <div class="relative w-full max-w-lg aspect-video rounded-xl overflow-hidden border border-white/10 my-4 bg-black flex items-center justify-center">
+        <img id="cf-modal-img" src="" alt="" class="w-full h-full object-contain">
+      </div>
+      <p id="cf-modal-desc" class="text-sm text-gray-300 text-center max-w-md"></p>
+    </div>
+  </div>
+</body>
+</html>
